@@ -1,1 +1,3 @@
-# hack-the-burgh-2018
+## Hack The Burgh 2018
+
+We are building a blink tracker.
