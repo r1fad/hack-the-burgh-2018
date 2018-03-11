@@ -4,7 +4,7 @@ import Card, { CardHeader } from 'material-ui/Card';
 import Grid from 'material-ui/Grid'
 import { AreaChart, Area, YAxis, Tooltip, XAxis } from 'recharts';
 import Typography from 'material-ui/Typography';
-import { values, mapValues } from 'lodash';
+import { values, mapValues, sumBy } from 'lodash';
 
 import MenuAppBar from './MenuAppBar';
 import SimpleCard from './SimpleCard';
@@ -48,25 +48,34 @@ class App extends Component{
     }
 
     const { data } = this.state;
+    const averageBlink = (sumBy(data, obj => obj.count) / (data.length * 10)) * 60 || 'N/A';
 
     return(
       <div style={{ flexGrow: 1 }}>
         <MenuAppBar />
 
       <div className = 'cards'>
-        <SimpleCard>
+        <SimpleCard title='Profile'>
           <Typography variant="headline" component="h2">
-            Name: Hendrik Molder
+            Hendrik Mölder
           </Typography>
-          <Typography variant="headline" component="h2">
-            Age: 20
+        </SimpleCard>
+        <SimpleCard title='Calories burned'>
+          <Typography variant='headline' component='h2'>
+            {sumBy(data, obj => obj.count) * 0.03} cal
           </Typography>
-          <Typography variant="headline" component="h2">
-            ID: d1rk145
+        </SimpleCard>
+        <SimpleCard title='Eye Health Status'>
+          <Typography
+            variant='headline'
+            component='h2'
+            style={averageBlink > 70 ? {color: 'orange'} :
+                    (averageBlink < 55 ? {color: 'red'} : {color: 'green'})}
+            >
+            {averageBlink > 70 ? 'BLINK LESS' :
+            (averageBlink < 55 ? 'BLINK MORE' : 'NORMAL')}
           </Typography>
-        </SimpleCard> 
-        <SimpleCard data={{ title: 'Eye Stats', avg_blink: 'Hendrik Molder', current_blink: '20', id: 'd1rk456' }}/>
-        <SimpleCard data={{ name: 'Hendrik Molder', age: '20', id: 'd1rk456' }}/>
+        </SimpleCard>
       </div>
 
         <div className = 'graph'>

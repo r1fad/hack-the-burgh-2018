@@ -22,13 +22,14 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const { classes, children} = props;
+  const { classes, children, title } = props;
 
   return (
     <div>
     <Grid container spacing={24}>
       <Card className={classes.card}>
         <CardContent>
+          <Typography className={styles.title}>{title}</Typography>
           {children}
         </CardContent>
       </Card>
