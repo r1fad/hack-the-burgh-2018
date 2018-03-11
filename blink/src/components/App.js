@@ -62,7 +62,7 @@ class App extends Component{
         </SimpleCard>
         <SimpleCard title='Calories burned'>
           <Typography variant='headline' component='h2'>
-            {sumBy(data, obj => obj.count) * 0.03} cal
+            {sumBy(data, obj => obj.count) * 0.003} cal
           </Typography>
         </SimpleCard>
         <SimpleCard title='Eye Health Status'>
