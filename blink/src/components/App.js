@@ -23,7 +23,10 @@ class App extends Component{
     if (ele){
       fetch('https://hacktheburgh-186fa.firebaseio.com/processed.json',{
         method: 'get',
-        mode: 'cors'
+        mode: 'cors',
+        headers : {
+          'content-type' : 'application/json'
+        }
       })
       .then(response => response.json())
       .then(jsonData => values(jsonData))
