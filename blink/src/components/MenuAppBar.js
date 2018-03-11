@@ -5,10 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
-import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
-import Switch from 'material-ui/Switch';
-import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
 const styles = {
@@ -43,7 +40,8 @@ class MenuAppBar extends React.Component {
   };
 
   render() {
-    const { classes, name, age, id } = this.props;
+    const { classes } = this.props;
+    const {name, age, id} = this.props.data;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
