@@ -4,9 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import IconButton from 'material-ui/IconButton';
-import AccountCircle from 'material-ui-icons/AccountCircle';
-import Menu, { MenuItem } from 'material-ui/Menu';
+
 
 const styles = {
   root: {
@@ -41,7 +39,6 @@ class MenuAppBar extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const {name, age, id} = this.props.data;
     const { auth, anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
@@ -54,32 +51,6 @@ class MenuAppBar extends React.Component {
             </Typography>
             {auth && (
               <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>{name}</MenuItem>
-                  <MenuItem onClick={this.handleClose}>{age}</MenuItem>
-                  <MenuItem onClick={this.handleClose}>{id}</MenuItem>
-                </Menu>
               </div>
             )}
           </Toolbar>

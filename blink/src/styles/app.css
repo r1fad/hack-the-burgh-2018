@@ -1,4 +1,10 @@
-.card-data{
+.cards{
   display: flex;
   justify-content: center;
+  margin: 10px;
+  flex-direction: row;
+}
+
+.graph{
+  margin: 50px;
 }

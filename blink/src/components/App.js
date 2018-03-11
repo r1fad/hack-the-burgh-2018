@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import '../styles/app.css';
 import Card, { CardHeader } from 'material-ui/Card';
 import Grid from 'material-ui/Grid'
-import { AreaChart, Area, YAxis } from 'recharts';
+import { AreaChart, Area, YAxis, Tooltip, XAxis } from 'recharts';
+import Typography from 'material-ui/Typography';
 import { values, mapValues } from 'lodash';
 
 import MenuAppBar from './MenuAppBar';
+import SimpleCard from './SimpleCard';
 import ResponsiveContainer from 'recharts/lib/component/ResponsiveContainer';
 
 class App extends Component{
@@ -49,7 +51,25 @@ class App extends Component{
 
     return(
       <div style={{ flexGrow: 1 }}>
-        <MenuAppBar data={{ user: 'test', age: '20', id: '0' }} />
+        <MenuAppBar />
+
+      <div className = 'cards'>
+        <SimpleCard>
+          <Typography variant="headline" component="h2">
+            Name: Hendrik Molder
+          </Typography>
+          <Typography variant="headline" component="h2">
+            Age: 20
+          </Typography>
+          <Typography variant="headline" component="h2">
+            ID: d1rk145
+          </Typography>
+        </SimpleCard> 
+        <SimpleCard data={{ title: 'Eye Stats', avg_blink: 'Hendrik Molder', current_blink: '20', id: 'd1rk456' }}/>
+        <SimpleCard data={{ name: 'Hendrik Molder', age: '20', id: 'd1rk456' }}/>
+      </div>
+
+        <div className = 'graph'>
         <Grid container spacing={8}>
           <Grid item xs={12}>
             <Card>
@@ -59,22 +79,23 @@ class App extends Component{
               />
               <ResponsiveContainer width='100%' height={500}>
                 <AreaChart data={data}
-                  margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
-                >
+                  margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
+                  <Tooltip />
                   <defs>
                   <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
                     <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
                   </linearGradient>
                   </defs>
-
-                  <YAxis datakey='count' />
+                  <XAxis label = "Time" />
+                  <YAxis datakey='count'/>
                   <Area type='monotone' dataKey='count' stroke='#8884d8' fillOpacity={1} fill='url(#colorUv)' />
                 </AreaChart>
               </ResponsiveContainer>
             </Card>
           </Grid>
         </Grid>
+        </div>
       </div>
     )
   }
