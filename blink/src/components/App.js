@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/app.css'
 
 import MenuAppBar from './MenuAppBar';
+import SimpleCard from './SimpleCard';
 
 class App extends Component{
 
@@ -16,12 +17,16 @@ class App extends Component{
   componentDidMount(){
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele){
-      fetch('http://127.0.0.1:5000/userdata',{
+      fetch('https://hacktheburgh-186fa.firebaseio.com/.json',{
         method: 'get',
-        mode: 'cors'
+        mode: 'cors',
+        headers : {
+          'content-type' : 'application/json'
+        }
       })
       .then(response => response.json())
-      .then(data=>this.setState({data:data, isLoading: false}))
+      .then(data => console.log(data))
+      // .then(data=>this.setState({data:data, isLoading: false}))
       .then(() => ele.outerHTML = '')
     }
   }
@@ -34,6 +39,10 @@ class App extends Component{
     return(
       <div>
         <MenuAppBar data={userData} />
+        <div className="card-data">
+          <SimpleCard data={eyeStats} />
+        </div>
+
       </div>
     )
   }
