@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">BL!NK</string>
     <string name="graph_id">graph_title</string>
-    <string name="graph_title">Average Blinks</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="graph_title">Blinks (X=Time(S), Y=Blinks)</string>
+    <string name="calorie_card_label">Calories Burned</string>
+    <string name="distance_moved_label">Distance Moved</string>
+    <string name="default_message"> No data available</string>
+    <string name="fitness_title"></string>
+    <string name="distance_covered">Metres covered by your eyelids</string>
+    <string name="calories_burnt">Calories burnt while blinking</string>
 </resources>
