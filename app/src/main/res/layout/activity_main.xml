@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout android:layout_height="wrap_content"
+    android:id="@+id/swiperefreshlayout"
     android:layout_width="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/blink_graph"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@string/graph_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/graph_title"
+            android:textAlignment="center"
+            android:textSize="14sp" />
+        <fragment
+            android:name="com.example.android.blink.GraphFragment"
+            android:id="@+id/graph_element"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>
 
 </android.support.v4.widget.SwipeRefreshLayout>
